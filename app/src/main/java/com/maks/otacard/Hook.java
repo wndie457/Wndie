@@ -40,7 +40,7 @@ public class Hook implements IXposedHookLoadPackage {
         iv.setTag(OVERLAY_TAG);
         iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
         iv.setImageBitmap(bm);
-        final float r = 21 * ctx.getResources().getDisplayMetrics().density;
+        final float r = 12 * ctx.getResources().getDisplayMetrics().density;
         iv.setOutlineProvider(new ViewOutlineProvider() {
             @Override public void getOutline(View view, Outline o) { o.setRoundRect(0, 0, view.getWidth(), view.getHeight(), r); }
         });
