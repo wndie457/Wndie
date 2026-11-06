@@ -40,13 +40,14 @@ public class Hook implements IXposedHookLoadPackage {
         iv.setTag(OVERLAY_TAG);
         iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
         iv.setImageBitmap(bm);
-        final float r = 12 * ctx.getResources().getDisplayMetrics().density;
+        final float r = 0 * ctx.getResources().getDisplayMetrics().density;
         iv.setOutlineProvider(new ViewOutlineProvider() {
             @Override public void getOutline(View view, Outline o) { o.setRoundRect(0, 0, view.getWidth(), view.getHeight(), r); }
         });
         iv.setClipToOutline(true);
         int idx = Math.min(1, card.getChildCount());
         card.addView(iv, idx, new FrameLayout.LayoutParams(-1, -1));
+        iv.bringToFront();
         for (String n : new String[]{"lin_center", "update_text"}) {
             int id = ctx.getResources().getIdentifier(n, "id", ctx.getPackageName());
             View t = id != 0 ? card.findViewById(id) : null;
